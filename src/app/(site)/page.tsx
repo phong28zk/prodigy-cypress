@@ -8,7 +8,12 @@ import { Button } from "@/components/ui/button";
 import banner from "../../../public/appBanner.png";
 import Cal from "../../../public/cal.png";
 
-import { CLIENTS } from "@/lib/constants";
+import { CLIENTS, USERS } from "@/lib/constants";
+import { twMerge } from "tailwind-merge";
+import clsx from "clsx";
+import { randomUUID } from "crypto";
+import CustomCard from "@/components/landing-page/custom-card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const HomePage = () => {
   return (
@@ -107,6 +112,41 @@ const HomePage = () => {
               subheading="Join 5m+ of satisfied users, personal and professional productivity needs."
               pill="🌏 Testimonials"
             />
+            {[...Array(2)].map((arr, index) => (
+              <div
+                key={randomUUID()}
+                className={twMerge(
+                  clsx('mt-10 flex flex-nowrap gap-6 self-start', {
+                    'flex-row-reverse': index === 1,
+                    'animate-[slide_250s_linear_infinite]': true,
+                    'animate-[slide_250s_linear_infinite_reverse]': index === 1,
+                  }), 'hover:paused'
+                )}
+              >
+                {USERS.map((testimonial, index) => (
+                  <CustomCard 
+                    key={testimonial.name}
+                    className="w-[380px] shrink-0s rounded-xl dark:bg-gradient-to-t dark:from-border dark:to-background"
+                    cardHeader={
+                      <div
+                        className="flex items-center gap-4"
+                      >
+                        <Avatar>
+                          <AvatarImage
+                            src={`/avatars/${index+1}.png`}
+                          />
+                          <AvatarFallback>
+                            AV
+                          </AvatarFallback>
+                        </Avatar>
+                      </div>
+                    }
+                  >
+
+                  </CustomCard>
+                ))}
+              </div>
+            ))}
           </div>
       </section>
     </>
