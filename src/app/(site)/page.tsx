@@ -8,12 +8,13 @@ import { Button } from "@/components/ui/button";
 import banner from "../../../public/appBanner.png";
 import Cal from "../../../public/cal.png";
 
-import { CLIENTS, USERS } from "@/lib/constants";
+import { CLIENTS, PRICING_CARDS, USERS } from "@/lib/constants";
 import { twMerge } from "tailwind-merge";
 import clsx from "clsx";
 import { randomUUID } from "crypto";
 import CustomCard from "@/components/landing-page/custom-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { CardDescription, CardTitle } from "@/components/ui/card";
 
 const HomePage = () => {
   return (
@@ -139,15 +140,37 @@ const HomePage = () => {
                             AV
                           </AvatarFallback>
                         </Avatar>
+                        <div>
+                          <CardTitle>
+                            {testimonial.name}
+                          </CardTitle>
+                          <CardDescription>
+                            {testimonial.name.toLocaleLowerCase().split(' ').join('')}
+                          </CardDescription>
+                        </div>
                       </div>
                     }
+                    cardContent={
+                        <p className="text-accent-foreground text-sm">{testimonial.message}</p>
+                    }
                   >
-
                   </CustomCard>
                 ))}
               </div>
             ))}
           </div>
+      </section>
+      <section className="mt-20 px-4 sm:px-6">
+        <TitleSection
+          title="Perfect for your team"
+          subheading="Experience all the benefits of our platform. Select a plan that fits your needs."
+          pill="💶 Plan"
+        />
+        <div className="flex flex-col-reverse sm:flex-row gap-4 justify-center sm:items-stretch items-center mt-10">
+            {PRICING_CARDS.map((card) => (
+              <div></div>
+            ))}
+        </div>
       </section>
     </>
   );
