@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Archivo } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import db from "@/lib/supabase/db";
 import { ThemeProvider } from "@/lib/providers/next-theme-provider";
+import { twMerge } from "tailwind-merge";
 
 const font = Archivo({ subsets: ["latin"] });
 
@@ -19,7 +21,7 @@ export default function RootLayout({
   console.log(db);
   return (
     <html lang="en">
-      <body className={font.className}>
+      <body className={twMerge('bg-background', font.className)}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
