@@ -23,6 +23,7 @@ import Logo from "../../../../public/cypresslogo.svg";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Loader from "@/components/Loader";
+import { actionLoginUser } from "@/lib/server-action/auth-actions";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -39,7 +40,23 @@ const LoginPage = () => {
   const isLoading = form.formState.isSubmitting;
   const onSubmit: SubmitHandler<z.infer<typeof FormSchema>> = async (
     formData
-  ) => {};
+  ) => {
+    const { error } = await actionLoginUser(formData);
+    if ( error ) { 
+      form.reset();
+      setSubmitError(error.message);
+    }
+    router.push("/dashboard");
+
+    // try {
+    //   await actionLoginUser(formData);
+    //   router.push("/dashboard");
+    // } catch (error) {
+    //   form.reset();
+    //   setSubmitError("Invalid email or password");
+    // }
+    
+  };
 
   return (
     <>
