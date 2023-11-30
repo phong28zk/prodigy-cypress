@@ -125,7 +125,7 @@ const LoginPage = () => {
           <span className="self-center">
             Don't have an account?{" "}
             <Link
-              href="/register"
+              href="/signup"
               className="text-brand-primaryBlue dark:text-brand-primaryPurple"
             >
               Register

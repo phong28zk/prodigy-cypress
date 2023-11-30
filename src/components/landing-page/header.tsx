@@ -156,7 +156,7 @@ const Header = () => {
             Login
           </Button>
         </Link>
-        <Link href={"/register"}>
+        <Link href={"/signup"}>
           <Button variant="btn-primary" className="whitespace-nowrap">
             Register
           </Button>
