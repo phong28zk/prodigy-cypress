@@ -15,6 +15,13 @@
       "when": 1700445115961,
       "tag": "0001_lying_harrier",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1701534354207,
+      "tag": "0002_magenta_gravity",
+      "breakpoints": true
     }
   ]
 }
