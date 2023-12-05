@@ -21,7 +21,7 @@ export async function middleware(req: NextRequest) {
     );
   }
 
-  if(["/login", "/signup"].includes(req.nextUrl.pathname) && session) {
+  if(["/login"].includes(req.nextUrl.pathname) && session) {
     console.log("redirecting to dashboard")
     return NextResponse.redirect(new URL("/dashboard", req.nextUrl.origin))
   }
