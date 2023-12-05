@@ -28,7 +28,63 @@ const WorkspaceCreator = () => {
   const router = useRouter();
   const [permissions, setPermissions] = useState("private");
   const [title, setTitle] = useState("");
-  const [collaborators, setCollaborators] = useState<User[]>([]);
+  const [collaborators, setCollaborators] = useState<User[]>([
+    // {
+    //   id: "1",
+    //   fullName: "John Doe",
+    //   avatarUrl: "https://example.com/avatar1.jpg",
+    //   billingAddress: {
+    //     street: "123 Main St",
+    //     city: "New York",
+    //     state: "NY",
+    //     postalCode: "10001",
+    //     country: "USA",
+    //   },
+    //   updatedAt: new Date().toISOString(),
+    //   paymentMethod: {
+    //     type: "credit_card",
+    //     cardNumber: "************1234",
+    //     expiryDate: "12/24",
+    //   },
+    //   email: "john.doe@example.com",
+    // },
+    // {
+    //   id: "2",
+    //   fullName: "Jane Smith",
+    //   avatarUrl: "https://example.com/avatar2.jpg",
+    //   billingAddress: {
+    //     street: "456 Elm St",
+    //     city: "San Francisco",
+    //     state: "CA",
+    //     postalCode: "94101",
+    //     country: "USA",
+    //   },
+    //   updatedAt: new Date().toISOString(),
+    //   paymentMethod: {
+    //     type: "paypal",
+    //     email: "jane.smith@example.com",
+    //   },
+    //   email: "jane.smith@example.com",
+    // },
+    // {
+    //   id: "3",
+    //   fullName: "Alice Johnson",
+    //   avatarUrl: "https://example.com/avatar3.jpg",
+    //   billingAddress: {
+    //     street: "789 Oak St",
+    //     city: "Chicago",
+    //     state: "IL",
+    //     postalCode: "60601",
+    //     country: "USA",
+    //   },
+    //   updatedAt: new Date().toISOString(),
+    //   paymentMethod: {
+    //     type: "bitcoin",
+    //     address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+    //   },
+    //   email: "alice.johnson@example.com",
+    // },
+  ]);
   const [isLoading, setIsLoading] = useState(false);
 
   const addCollaborator = (user: User) => {
@@ -191,8 +247,8 @@ const WorkspaceCreator = () => {
                           text-muted-foreground
                           overflow-hidden
                           overflow-ellipsis
-                          sm:w-[300px]
-                          w-[140px]
+                          sm:w-[200px]
+                          w-[120px]
                         "
                       >
                         {c.email}
