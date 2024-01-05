@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { AuthUser } from "@supabase/supabase-js";
-import { Subscription } from "../supabase/supabase.types";
-import React, { createContext, useContext, useEffect, useState } from "react";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { getUserSubscriptionStatus } from "../supabase/queries";
-import { useToast } from "@/components/ui/use-toast";
+import { AuthUser } from '@supabase/supabase-js';
+import { Subscription } from '../supabase/supabase.types';
+import { createContext, useContext, useEffect, useState } from 'react';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { getUserSubscriptionStatus } from '../supabase/queries';
+import { useToast } from '@/components/ui/use-toast';
 
 type SupabaseUserContextType = {
   user: AuthUser | null;
@@ -26,7 +26,7 @@ interface SupabaseUserProviderProps {
 }
 
 export const SupabaseUserProvider: React.FC<SupabaseUserProviderProps> = ({
-    children,
+  children,
 }) => {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [subscription, setSubscription] = useState<Subscription | null>(null);
@@ -34,6 +34,8 @@ export const SupabaseUserProvider: React.FC<SupabaseUserProviderProps> = ({
 
   const supabase = createClientComponentClient();
 
+  //Fetch the user details
+  //subscrip
   useEffect(() => {
     const getUser = async () => {
       const {
@@ -46,9 +48,9 @@ export const SupabaseUserProvider: React.FC<SupabaseUserProviderProps> = ({
         if (data) setSubscription(data);
         if (error) {
           toast({
-            title: "Error",
+            title: 'Unexpected Error',
             description:
-              "There was an error fetching your subscription status. Please try again later.",
+              'Oppse! An unexpected error happened. Try again later.',
           });
         }
       }
@@ -56,10 +58,8 @@ export const SupabaseUserProvider: React.FC<SupabaseUserProviderProps> = ({
     getUser();
   }, [supabase, toast]);
   return (
-    <>
-      <SupabaseUserContext.Provider value={{ user, subscription }}>
-        {children}
-      </SupabaseUserContext.Provider>
-    </>
+    <SupabaseUserContext.Provider value={{ user, subscription }}>
+      {children}
+    </SupabaseUserContext.Provider>
   );
 };
